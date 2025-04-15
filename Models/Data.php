@@ -26,7 +26,8 @@ class Data extends Bdd{
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 pseudo VARCHAR (50) NOT NULL UNIQUE,
                 email VARCHAR (255) NOT NULL UNIQUE,
-                password TEXT NOT NULL ,
+                password VARCHAR(100) NOT NULL ,
+                roles VARCHAR(100) NOT NULL,
                 id_salons INT,
                 FOREIGN KEY (id_salons) REFERENCES salons(id) ON DELETE CASCADE ON UPDATE CASCADE);
 

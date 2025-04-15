@@ -7,14 +7,15 @@ use services\database\Bdd;
 
 class User extends Bdd{
 
-    private function addUser ($pseudo, $email, $password){
+    private function addUser ($pseudo, $email, $password, $roles){
         try{
         $sql = $this->getConnection();
-        $req = $sql->prepare("INSERT INTO users (pseudo, email, password) values (:pseudo, :email, :password)  ");
+        $req = $sql->prepare("INSERT INTO users (pseudo, email, password, roles) values (:pseudo, :email, :password, :roles)  ");
         $req->execute([
             'pseudo' => $pseudo, 
             'email' => $email, 
-            'password' => $password]);
+            'password' => $password,
+        'roles' => $roles]);
         }catch(\PDOException $e){
             return $e->getMessage();
         }
@@ -34,7 +35,7 @@ class User extends Bdd{
             }
     }
 
-    public function Register($pseudo, $email, $password){
+    public function Register($pseudo, $email, $password, $roles){
 
         $existUser = $this->checkUser($email, $pseudo);
 
@@ -42,7 +43,7 @@ class User extends Bdd{
            return "Cet personne existe déjà";
         }else{
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $this->addUser($pseudo, $email, $hashedPassword);
+            $this->addUser($pseudo, $email, $hashedPassword, $roles);
 
             return "Vous êtes bien inscrit";
         }
@@ -57,6 +58,7 @@ class User extends Bdd{
                
                 $_SESSION['user_id']= $existUser['id'];
                 $_SESSION['user_name'] = $existUser['pseudo'];
+                $_SESSION['roles'] = $existUser['roles'];
 
                 header('Location: ?page=home');
                 exit();

@@ -6,6 +6,7 @@ class ControllerUser{
 
     public function index(){
         $user = new User;
+        $nameFile = 'user';
         $template = 'log';
         $msg =''; 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -25,6 +26,7 @@ class ControllerUser{
 
     public function register(){
         $user = new User;
+        $nameFile = 'user';
         $template = 'register';
         $msg =''; 
 
@@ -36,8 +38,8 @@ class ControllerUser{
                         $pseudo = $_POST['pseudo'];
                         $email = $_POST['email'];
                         $password = $_POST['password'];
-
-                        $msg =  $user->Register($pseudo, $email, $password);
+                        $roles = "ROLES_USER";
+                        $msg =  $user->Register($pseudo, $email, $password, $roles);
                     
                 }
             }

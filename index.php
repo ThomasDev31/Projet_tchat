@@ -7,13 +7,8 @@ $datas = new Data();
 $datas->createTable();
 
 
-
-
-
 $route = new \services\rooter\Routing;
-
 $route->router();
-
 
 
 $dbb = new \services\database\Bdd;

@@ -1,6 +1,6 @@
 <?php
 
-
+//autoloade appel des fichiers la création d'une classe
 
 class AutoLoader{
     public static function inclusionAuto($className){

@@ -1,8 +1,30 @@
 <div>
     <p>Voici le lieu pour parler</p>
+    <?php if ($_SESSION): ?>
+        <?php if ($_SESSION['roles'] === "ROLES_ADMIN"): ?>
+            <a href="?page=admin&action=index"> Créer un channel ou un salon</a>
+        <?php endif; ?>
+    <?php endif; ?>
 
-<form action="" method="POST">
-    <input type="text" name="content" id="content">
-    <input type="submit" values="Envoyer">
-</form>
+    <?php if (!empty($category)): ?>
+        <?php foreach ($categories as $catName => $salons): ?>
+            <h2><?= htmlspecialchars($catName) ?></h2>
+
+            <?php if (!empty($salons)): ?>
+                <ul>
+                    <?php foreach ($salons as $salon): ?>
+                        <li><?= htmlspecialchars($salon) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p><em>Aucun salon pour cette catégorie.</em></p>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+    <form action="" method="POST">
+        <input type="text" name="content" id="content">
+        <input type="submit" values="Envoyer">
+    </form>
+
 </div>

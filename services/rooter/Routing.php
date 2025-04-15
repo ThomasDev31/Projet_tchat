@@ -1,5 +1,5 @@
 <?php
-//Rooter qui gère les pages et les actions
+//Rooter qui gère les pages et les actions (méthodes)
 namespace services\rooter;
 
 use Controllers\ControllerHome;

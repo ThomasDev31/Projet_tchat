@@ -1,0 +1,19 @@
+<div>
+    <?php if (isset($msg) && $msg): ?>
+        <p><?= $msg ?></p>
+    <?php endif; ?>
+    <form action="" method="POST">
+        <label for="salon">Ajouter un salon</label>
+        <input type="text" name="salon" id="salon">
+        <select name="categoryId">
+            <?php foreach ($category as $c): ?>
+                <option value="<?php echo $c['id']; ?>"><?php echo $c['name']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <input type="submit" value="Ajouter">
+    </form>
+
+    <a href="?page=channel&action=index"> Retourner à tous les channels</a>
+    <a href="?page=admin&action=index"> Add Channel</a>
+    <a href="?page=admin&action=displayChannel"> Show Channels</a>
+</div>

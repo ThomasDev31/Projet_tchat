@@ -1,0 +1,27 @@
+<div>
+    <table>
+        <tdead>
+            <tr>
+                <th>Name</th>
+                <th>id</th>
+                <th>delete</th>
+                <th>Modify</th>
+            </tr>
+        </tdead>
+        <tbody>
+            
+        <?php foreach($category as $c) :?>
+            <tr>
+            <td> <?= $c['name'] ?></td>
+            <td><?= $c['id'] ?></td>
+            <td><button value="Delete">Delete</button></td>
+            <td><button value="Modify">Modify</button></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    
+
+    </table>
+    <a href="?page=channel&action=index"> Retourner à tous les channels</a>
+    <a href="?page=admin&action=index"> Ajouter un channel</a>
+</div>

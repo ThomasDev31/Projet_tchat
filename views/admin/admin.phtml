@@ -1,0 +1,14 @@
+<div>
+    <?php if (isset($msg) && $msg): ?>
+        <p><?= $msg ?></p>
+    <?php endif; ?>
+    <form action="" method="POST">
+        <label for="channel">Ajouter un channel</label>
+        <input type="text" name="channel" id="channel">
+        <input type="submit" value="Ajouter">
+    </form>
+
+    <a href="?page=channel&action=index"> Retourner à tous les channels</a>
+    <a href="?page=admin&action=addSalon"> Add Salon</a>
+    <a href="?page=admin&action=displayChannel"> Show Channels</a>
+</div>
