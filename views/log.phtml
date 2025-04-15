@@ -1,0 +1,20 @@
+<div class = "container-log">
+    <?php if($msg): ?>
+        <p><?=  $msg ?></p>
+    <?php endif; ?>
+    <form action="" method="POST">
+        <fieldset>
+            <legend>Login</legend>
+            <div>
+            <label for ="email">Saisir votre mail ou pseudo:</label>
+            <input type ="text" name ="value" id ="email">
+            </div>
+            <div>
+            <label for ="password">Saisir votre mot de passe :</label>
+            <input type ="password" name ="password" id="password">
+            </div>
+            <button type="submit">Se connecter</button>
+        </fieldset>
+    </form>
+    <a href="?page=login&action=register">Si vous n'avez pas de compte</a>
+</div>

@@ -1,0 +1,24 @@
+<div class="container-register">
+    <?php if($msg): ?>
+        <p><?=  $msg ?></p>
+    <?php endif; ?>
+    <form action="" method="POST">
+        <fieldset>
+            <legend>Register</legend>
+            <div>
+                <label for="pseudo">Saisir votre pseudo :</label>
+                <input  type ="text" name ="pseudo" id ="pseudo">
+            </div>
+            <div>
+                <label for ="email">Saisir votre mail :</label>
+                <input type ="email" name ="email" id ="email">
+            </div>
+            <div>
+            <label for ="password">Saisir votre mot de passe :</label>
+            <input type ="password" name ="password" id="password">
+            </div>
+            <button type="submit">S'en registrer</button>
+        </fieldset>
+    </form>
+    <a href="?page=login&action=index">Si vous avez un comtpe</a>
+</div>

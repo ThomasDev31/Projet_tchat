@@ -1,0 +1,107 @@
+h1{
+    color:red;
+}
+body{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+.logo{
+    border-radius: 50%;
+    width:80px;
+    height: 70px;
+}
+
+header{
+    padding:20px;
+    background-color:#BAD7F2;
+}
+nav{
+    display: flex;
+}
+nav div{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+nav div a{
+    text-decoration: none;
+    width:60px;
+    background-color: #F2E2BA;
+    text-align: center;
+    padding:20px;
+    color :black;
+    border-radius: 30px;
+}
+
+nav div a:hover{
+    background-color: #F2BAC9;
+    box-shadow: 5px 5px 8px rgba(0,0,0,0.4);
+    transition: all .2s;
+}
+header{
+    max-height: 100px;
+}
+
+main{
+    margin:auto;
+    margin-top: 50px;
+    width:80%
+}
+.container-register, .container-log{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+form{
+    width:50%;
+    margin:auto;
+    margin-bottom:30px;
+}
+
+fieldset:not(label){
+    display: flex;
+    flex-direction: column;
+    gap:15px
+}
+fieldset div{
+    display: flex;
+    gap:20px
+}
+
+fieldset legend{
+    font-weight: bold;
+    font-size:2rem;
+    padding:0 15px;
+    text-align:center;
+}
+
+fieldset input{
+    width:50%;
+    border-radius: 5px;
+    padding:5px;
+    font-size:1.2rem;
+}
+
+fieldset label{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+fieldset input:focus{
+    background-color: #BAD7F2;
+}
+
+fieldset button{
+    margin: auto;
+    border-radius: 20px;
+    padding:10px;
+    width:25%
+}
