@@ -5,6 +5,7 @@ namespace Models;
 use services\database\Bdd;
 
 class Admin extends Bdd{
+
     public function createChannel($name){
         try {
             $sql = $this->getConnection();
@@ -27,15 +28,16 @@ class Admin extends Bdd{
             return $e->getMessage();
         }
     }
+
     public function createSalon($categoryId, $name){
         try {
             $sql = $this->getConnection();
             $req = $sql->prepare('INSERT INTO salons (name, id_category) values (:name, :id_category)');
             $req->execute(['name' => $name, 'id_category' => $categoryId]);
-
             return "L'ajout du salon à bien était éffectué";
         } catch (\PDOException $e) {
             return $e->getMessage();
         }
     }
+
 }

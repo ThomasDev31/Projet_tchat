@@ -28,12 +28,14 @@ class Data extends Bdd{
                 email VARCHAR (255) NOT NULL UNIQUE,
                 password VARCHAR(100) NOT NULL ,
                 roles VARCHAR(100) NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 id_salons INT,
                 FOREIGN KEY (id_salons) REFERENCES salons(id) ON DELETE CASCADE ON UPDATE CASCADE);
 
                 CREATE TABLE IF NOT EXISTS message(
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 content TEXT NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 id_salons INT,
                 id_users INT,
                 FOREIGN KEY (id_salons) REFERENCES salons(id) ON DELETE CASCADE ON UPDATE CASCADE,

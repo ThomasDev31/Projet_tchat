@@ -1,0 +1,44 @@
+<div class="content-text">
+    <div>
+        <h2 id="title">Bienvenue sur le salon : <?= $_GET['name'] ?></h2>
+        <p>Voici le lieu pour parler</p>
+        <?php if ($_SESSION): ?>
+            <?php if ($_SESSION['roles'] === "ROLES_ADMIN"): ?>
+                <a href="?page=admin&action=index"> Créer un channel ou un salon</a>
+            <?php endif; ?>
+        <?php endif; ?>
+
+        <?php if (!empty($categorys)): ?>
+            <?php foreach ($categories as $catName => $salons): ?>
+                <h2><?= htmlspecialchars($catName) ?></h2>
+
+                <?php if (!empty($salons)): ?>
+                    <ul>
+                        <?php foreach ($salons as $salon): ?>
+                            <li><a href="?page=channel&action=show&name=<?= htmlspecialchars($salon) ?>"><?= htmlspecialchars($salon) ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <p><em>Aucun salon pour cette catégorie.</em></p>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+    <div>
+        <div class="d">
+            <?php if ($messages): ?>
+                <?php foreach ($messages as $m): ?>
+                    <p><?= $m['user_name'] ?></p>
+                    <p><?= $m['content'] ?></p>
+                    <p><?= $m['created_at_time'] ?></p>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Il n'y pas de messages encore !!! </p>
+            <?php endif; ?>
+        </div>
+        <form class="d-content" action="" method="POST">
+            <input type="text" name="content" id="content">
+            <input type="submit" values="Envoyer">
+        </form>
+    </div>
+</div>

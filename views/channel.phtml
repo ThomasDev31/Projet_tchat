@@ -1,5 +1,5 @@
 <div>
-    <p>Voici le lieu pour parler</p>
+    <p class="red">Voici tous les Channels et salons de discussion</p>
     <?php if ($_SESSION): ?>
         <?php if ($_SESSION['roles'] === "ROLES_ADMIN"): ?>
             <a href="?page=admin&action=index"> Créer un channel ou un salon</a>
@@ -13,7 +13,7 @@
             <?php if (!empty($salons)): ?>
                 <ul>
                     <?php foreach ($salons as $salon): ?>
-                        <li><?= htmlspecialchars($salon) ?></li>
+                        <li><a href="?page=channel&action=show&name=<?=htmlspecialchars($salon) ?>"><?= htmlspecialchars($salon) ?></a></li>
                     <?php endforeach; ?>
                 </ul>
             <?php else: ?>
@@ -21,10 +21,4 @@
             <?php endif; ?>
         <?php endforeach; ?>
     <?php endif; ?>
-
-    <form action="" method="POST">
-        <input type="text" name="content" id="content">
-        <input type="submit" values="Envoyer">
-    </form>
-
 </div>

@@ -105,3 +105,15 @@ fieldset button{
     padding:10px;
     width:25%
 }
+
+.d{
+    width:100%;
+    height:400px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+d-content{
+    position: fixed;
+    bottom: 0;
+}
