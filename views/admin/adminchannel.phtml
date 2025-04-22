@@ -15,7 +15,7 @@
             <td> <?= $c['name'] ?></td>
             <td><?= $c['id'] ?></td>
             <td><button value="Delete">Delete</button></td>
-            <td><button value="Modify">Modify</button></td>
+            <td><a href="?page=admin&action=modifySalon&name=<?=$c['name']?>" >Modifier <?=$c['name']?></a></td>
             </tr>
         <?php endforeach; ?>
         </tbody>

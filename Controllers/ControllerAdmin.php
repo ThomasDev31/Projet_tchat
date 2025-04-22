@@ -38,4 +38,37 @@ class ControllerAdmin
         $template = 'adminSalon';
         require './views/src/layout.phtml';
     }
-}
+    public function modifySalon(){
+        $salon = 
+    }
+
+
+
+
+    public function displayUser(){
+        $user = new Admin;
+        $datas = $user->getUsers();
+        $nameFile = 'admin';
+        $template = 'displayuser';
+        require './views/src/layout.phtml';
+    }
+    public function modifyUser(){
+        $user = new Admin;
+        $u = $user->getUser($_GET['name']); 
+        $nameFile = 'admin';
+        $template = 'modifyUser';
+        $pseudo = $_GET['name'];
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if(empty($_POST['roles'])){
+                $msg = "Veuillez saisir tous les champs";
+            }else{
+                $role = $_POST['roles'];
+                $user->updateRoleUser($pseudo, $role);
+                header('Location: index.php?page=admin&action=displayUser');
+                exit();
+            }
+
+        }
+        require './views/src/layout.phtml';
+    }
+} 

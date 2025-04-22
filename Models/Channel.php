@@ -6,7 +6,7 @@ use services\database\Bdd;
 
 class Channel extends Bdd
 {
-    public function getAllChannels(){
+    public function getAllChannels(): array|string { 
         try {
             $sql = $this->getConnection();
             $req = $sql->prepare('SELECT * FROM category ORDER BY name ASC');
@@ -17,8 +17,7 @@ class Channel extends Bdd
             return $e->getMessage();
         }
     }
-    public function getAllChannelsWithSalon()
-    {
+    public function getAllChannelsWithSalon(): array|string {
         try {
             $sql = $this->getConnection();
             $req = $sql->prepare('SELECT 
@@ -36,8 +35,7 @@ class Channel extends Bdd
             return $e->getMessage();
         }
     }
-    public function getAllSalon()
-    {
+    public function getAllSalon(): array|string {
         try {
             $sql = $this->getConnection();
             $req = $sql->prepare('SELECT * FROM salon ORDER BY id ASC ');
@@ -48,8 +46,7 @@ class Channel extends Bdd
             return $e->getMessage();
         }
     }
-    public function getSalonByName($name)
-    {
+    public function getSalonByName($name): array|string {
         try {
             $sql = $this->getConnection();
             $req = $sql->prepare('SELECT * FROM salons WHERE name = :name');
@@ -61,7 +58,7 @@ class Channel extends Bdd
         }
     }
 
-    public function createMessage($content, $salonId, $usersId){
+    public function createMessage($content, $salonId, $usersId) {
         try {
             $sql = $this->getConnection();
             $req = $sql->prepare('INSERT INTO message (content, id_salons, id_users) values (:content, :id_salons, :id_users)');
@@ -71,7 +68,7 @@ class Channel extends Bdd
         }
     }
 
-    public function getAllMessageBySalons($salonId){
+    public function getAllMessageBySalons($salonId): array|string{
         try {
             $sql = $this->getConnection();
             $req = $sql->prepare('SELECT 

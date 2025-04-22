@@ -6,7 +6,7 @@ use services\database\Bdd;
 
 class Admin extends Bdd{
 
-    public function createChannel($name){
+    public function createChannel($name): string{
         try {
             $sql = $this->getConnection();
             $req = $sql->prepare('INSERT INTO category (name) VALUES (:name)');
@@ -17,7 +17,7 @@ class Admin extends Bdd{
         }
     }
 
-    public function getAllChannels(){
+    public function getAllChannels(): array|string{
         try {
             $sql = $this->getConnection();
             $req = $sql->prepare('SELECT * FROM category ORDER BY id ASC ');
@@ -29,7 +29,7 @@ class Admin extends Bdd{
         }
     }
 
-    public function createSalon($categoryId, $name){
+    public function createSalon($categoryId, $name): string{
         try {
             $sql = $this->getConnection();
             $req = $sql->prepare('INSERT INTO salons (name, id_category) values (:name, :id_category)');
@@ -40,4 +40,60 @@ class Admin extends Bdd{
         }
     }
 
+    public function getSalon($name){
+        try {
+            $sql = $this->getConnection();
+            $req = $sql->prepare('SELECT * FROM salons where name = :name');
+            $req->execute(['name' => $name]);
+            $data = $req->fetchAll(\PDO::FETCH_ASSOC);
+            return $data;
+        } catch (\PDOException $e) {
+            return $e->getMessage();
+        }
+        
+    }
+
+    public function modifySalon($name){
+        try {
+            $sql = $this->getConnection();
+            $req = $sql->prepare('UPDATE salons set  name = :name');
+            $req->execute(['name' => $name]);
+        } catch (\PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function getUsers():array|string {
+        try {
+            $sql = $this->getConnection();
+            $req = $sql->prepare('SELECT pseudo, roles, created_at, is_verified FROM users ORDER BY roles ASC' );
+            $req->execute();
+            $data = $req->fetchAll(\PDO::FETCH_ASSOC);
+            return $data; 
+        } catch (\PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function getUser($pseudo): array|string{
+        try {
+            $sql = $this->getConnection();
+            $req = $sql->prepare('SELECT pseudo, roles, created_at, is_verified FROM users WHERE pseudo = :pseudo');
+            $req->execute(['pseudo' => $pseudo]);
+            $data = $req->fetch();
+            return $data;
+        } catch (\PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+    
+    public function updateRoleUser($pseudo, $role){
+        try {
+            $sql = $this->getConnection();
+            $req = $sql->prepare('UPDATE users SET roles = :roles  WHERE pseudo = :pseudo');
+            $req->execute(['pseudo' => $pseudo, 'roles' => $role]);
+        } catch (\PDOException $e) {
+            return $e->getMessage();
+        }
+    }
 }

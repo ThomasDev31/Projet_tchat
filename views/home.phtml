@@ -7,5 +7,10 @@
         <?php if ($_SESSION['roles'] === 'ROLES_ADMIN'): ?>
             <p> Vous êtes bien connecter en tant que administrateur !</p>
         <?php endif; ?>
+        <?php if ($_SESSION['verify'] === '1'): ?>
+            
+        <?php else: ?>
+             <p> N'oubliez pas de valider votre email !</p>
+        <?php endif; ?>
     <?php endif; ?>
 </div>

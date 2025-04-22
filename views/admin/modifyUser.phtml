@@ -1,0 +1,20 @@
+<form action="" method="POST">
+    
+    <p>PSEUDO : <?= $u['pseudo'] ?></p>
+    <?php if($u['roles'] === "ROLES_USER"): ?>  
+    <select name="roles" id="roles">
+        <option value="ROLES_USER">Roles User</option>
+        <option value="ROLES_MODO">Roles Modérateur</option>
+    </select>
+        <?php elseif($u['roles'] === "ROLES_MODO"): ?>
+    <select name="roles" id="roles">   
+        <option value="ROLES_MODO">Roles Modérateur</option>
+        <option value="ROLES_USER">Roles user</option>
+    </select>
+        <?php else: ?>
+        <p>Role : <?= $u['roles'] ?></p>
+        <?php endif; ?>
+    <p>Created : <?= $u['created_at'] ?></p>
+    <p>Verify Email : <?= $u['is_verified'] ?></p>
+    <input type="submit" value="Enregistrer">
+</form>

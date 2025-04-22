@@ -5,7 +5,7 @@ use services\database\Bdd;
 
 
 class Data extends Bdd{
-    public function createTable(){
+    public function createTable() {
         try{
             $sql = $this->getConnection();
             $checktable = $sql->prepare("SHOW TABLES LIKE 'category' ");
@@ -29,6 +29,8 @@ class Data extends Bdd{
                 password VARCHAR(100) NOT NULL ,
                 roles VARCHAR(100) NOT NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                verification_token VARCHAR (255) UNIQUE,
+                is_verified VARCHAR(1),
                 id_salons INT,
                 FOREIGN KEY (id_salons) REFERENCES salons(id) ON DELETE CASCADE ON UPDATE CASCADE);
 
@@ -41,7 +43,8 @@ class Data extends Bdd{
                 FOREIGN KEY (id_salons) REFERENCES salons(id) ON DELETE CASCADE ON UPDATE CASCADE,
                 FOREIGN KEY (id_users) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE); ');
                 $sqlCreateTables->execute();
-                var_dump('Les tables sont bien créées');
+                var_dump(value: 'Les tables sont bien créées');
+                
             }
         }catch(\PDOException $e){
             return $e->getMessage();
