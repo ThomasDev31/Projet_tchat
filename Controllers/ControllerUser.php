@@ -59,13 +59,13 @@ class ControllerUser{
                         $headers = "MIME-Version: 1.0" . "\r\n";
                         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
                         $headers .= "From: tissierthomas42@gmail.com" . "\r\n";
-                        if (mail($to, $subject, $message, $headers)) {
+                        // if (mail($to, $subject, $message, $headers)) {
                             $msg =  $user->Register($pseudo, $email, $password, $roles, $token);
                             header('Location: index.php?page=login&action=checking');
-                            exit();
-                        } else {
-                            $msg =  "Erreur lors de l'envoi de l'email.";
-                        }
+                        //     exit();
+                        // } else {
+                        //     $msg =  "Erreur lors de l'envoi de l'email.";
+                        // }
                     
                 }
             }
