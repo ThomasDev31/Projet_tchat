@@ -48,7 +48,6 @@ class ControllerAdmin
     public function displayUser(){
         $user = new Admin;
         $datas = $user->getUsers();
-        var_dump($datas);
         $nameFile = 'admin';
         $template = 'displayuser';
         require './views/src/layout.phtml';
